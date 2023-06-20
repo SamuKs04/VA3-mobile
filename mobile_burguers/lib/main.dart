@@ -31,7 +31,7 @@ class Home extends StatelessWidget{
         title: const Text(
           'Mobile Burguers',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 24, fontFamily: 'Roboto'),
+          style: TextStyle(fontSize: 24, fontFamily: 'Tilt Prism'),
         ),
         titleTextStyle: const TextStyle(color: Colors.white),
       ),
@@ -47,9 +47,9 @@ class Home extends StatelessWidget{
           ),
           const Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('\n Bem Vindo(a) \n '),
+                Text('\n\n Bem Vindo(a) \n Nosso Cardápio está de cara nova! \n Clique no botão abaixo para acessar', style: TextStyle(color: Colors.orangeAccent, fontSize: 22,)),
               ],
             ),
           ),
