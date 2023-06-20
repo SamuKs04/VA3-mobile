@@ -16,7 +16,7 @@ class APP extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const Home(),
-        '/almoco': (context) => AlmocoScreen()
+        '/cardapio': (context) => const AlmocoScreen()
       },
     );
   }
@@ -60,9 +60,9 @@ class Home extends StatelessWidget {
                     )),
                     const SizedBox(height: 20),
             ElevatedButton(
-              child: const Text('Ver almoços'),
+              child: const Text('Cardápio'),
               onPressed: () {
-                Navigator.pushNamed(context, '/almoco');
+                Navigator.pushNamed(context, '/cardapio');
               },
             )
               ],
@@ -119,13 +119,13 @@ class AlmocoScreen extends StatelessWidget {
   }
 }
 
-class item {
+class Item {
   String nome;
   String descricao;
   double preco;
   String? url;
 
-  item(
+  Item(
       {required this.nome,
       required this.descricao,
       required this.preco,
