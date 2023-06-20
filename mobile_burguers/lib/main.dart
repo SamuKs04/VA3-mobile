@@ -16,6 +16,22 @@ class APP extends StatelessWidget{
   }
 }
 
+class Home extends StatelessWidget{
+  const Home ({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: const Color.fromARGB(255, 242, 204, 12),
+        title: const Text('Mobile Burgues', textAlign: TextAlign.center,)
+
+      ),
+    );
+  }
+}
+
 
 
 
