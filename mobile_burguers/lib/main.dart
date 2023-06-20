@@ -48,16 +48,23 @@ class Home extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          const Center(
+          Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
+                const Text(
                     '\n\n Bem Vindo(a) \n Nosso Cardápio está de cara nova! \n Clique no botão abaixo para acessar',
                     style: TextStyle(
                       color: Colors.orangeAccent,
                       fontSize: 22,
                     )),
+                    const SizedBox(height: 20),
+            ElevatedButton(
+              child: const Text('Ver almoços'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/almoco');
+              },
+            )
               ],
             ),
           ),
