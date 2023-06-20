@@ -24,24 +24,41 @@ class Home extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+        return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 242, 204, 12),
-        title: const Text('Mobile Burgues', textAlign: TextAlign.center, style: TextStyle(fontSize: 24),),
+        title: const Text(
+          'Mobile Burguers',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 24, fontFamily: 'Roboto'),
+        ),
         titleTextStyle: const TextStyle(color: Colors.white),
       ),
-      body: const Center( 
-        child: Column( 
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Text('Bem Vindes(a) \n '),        
-          ],
-        ),
+       body: Column(
+        children: [
+          SizedBox(
+            height: 200,
+            width: double.infinity,
+            child: Image.asset(
+              'lib/img/home_img.jpg',
+              fit: BoxFit.cover,
+            ),
+          ),
+          const Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Text('\n Bem Vindo(a) \n '),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
 }
+      
 
 
 
