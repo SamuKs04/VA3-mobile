@@ -58,13 +58,13 @@ class Home extends StatelessWidget {
                       color: Colors.orangeAccent,
                       fontSize: 22,
                     )),
-                    const SizedBox(height: 20),
-            ElevatedButton(
-              child: const Text('Cardápio'),
-              onPressed: () {
-                Navigator.pushNamed(context, '/cardapio');
-              },
-            )
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  child: const Text('Cardápio'),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/cardapio');
+                  },
+                )
               ],
             ),
           ),
@@ -86,32 +86,42 @@ class AlmocoScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Stack(
-            children: <Widget>[
-              SizedBox(
-                height: 200,
-                width: double.infinity,
-                child: Image.asset(
-                  'lib/img/almoco-menu.jpg',
-                  fit: BoxFit.cover,
+          SizedBox(
+            height: 200,
+            width: double.infinity,
+            child: Image.asset(
+              'lib/img/almoco-menu.jpg',
+              fit: BoxFit.cover,
+            ),
+          ),
+          Container(
+            height: 100,
+            color: Colors.black.withOpacity(0.5),
+            child: const Center(
+              child: Text(
+                'Um bom dia depende de um bom almoço! \n Bem-vindo(a)!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                      height: 100,
-                      color: Colors.black.withOpacity(0.5),
-                      child: const Center(
-                          child: Text(
-                              'Um bom dia depende de um bom almoço! \n Bem-vindo(a)!',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold)))))
-            ],
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 4, // Número de itens na lista
+              itemBuilder: (BuildContext context, int index) {
+                return const Column(children: [
+                  ListTile(
+                    title: Text(
+                        'Nome: Big Macas \n Descrição: Dois hmaburgues alface e pão com gergelin \n preco: RS 99.9 \n url: <imagem>'),
+                  ),
+                  Divider(),
+                ]);
+              },
+            ),
           ),
         ],
       ),
