@@ -38,18 +38,11 @@ class Home extends StatelessWidget {
         ),
         titleTextStyle: const TextStyle(color: Colors.white),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            const Text('Bem Vindes(a) \n '),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              child: const Text('Ver almoços'),
-              onPressed: () {
-                Navigator.pushNamed(context, '/almoco');
-              },
-            )
+            Text('Bem Vindes(a) \n '),
           ],
         ),
       ),
