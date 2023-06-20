@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_burguers/startscreen.dart';
+import 'startscreen.dart';
 
 void main() {
   runApp(const APP());
@@ -13,9 +15,9 @@ class APP extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.yellow,
       ),
-      initialRoute: '/',
+      home: const StartScreen(),
       routes: {
-        '/': (context) => const Home(),
+        '/home': (context) => const Home(),
         '/cardapio': (context) => const AlmocoScreen()
       },
     );
@@ -58,7 +60,7 @@ class Home extends StatelessWidget {
                       color: Colors.orangeAccent,
                       fontSize: 22,
                     )),
-                const SizedBox(height: 20),
+                const SizedBox(height: 80),
                 ElevatedButton(
                   child: const Text('Cardápio'),
                   onPressed: () {
