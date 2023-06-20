@@ -16,6 +16,7 @@ class APP extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const Home(),
+        '/almoco': (context) => AlmocoScreen()
       },
     );
   }
