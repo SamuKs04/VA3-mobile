@@ -40,50 +40,53 @@ class Home extends StatelessWidget {
         title: const Text(
           'Mobile Burguers',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 24, fontFamily: 'BebasNeue', fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 24,
+              fontFamily: 'BebasNeue',
+              fontWeight: FontWeight.bold),
         ),
         titleTextStyle: const TextStyle(color: Colors.black),
       ),
-      body: Container( 
+      body: Container(
         color: Colors.black,
         child: Column(
-        children: [
-          SizedBox(
-            height: 200,
-            width: double.infinity,
-            child: Image.asset(
-              'lib/img/home_img.jpg',
-              fit: BoxFit.cover,
+          children: [
+            SizedBox(
+              height: 200,
+              width: double.infinity,
+              child: Image.asset(
+                'lib/img/home_img.jpg',
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text(
-                    '\n\n\n Bem Vindo(a)! \n Nosso Cardápio está de cara nova! \n Clique no botão abaixo para acessar',
-                    style: TextStyle(
-                      color: Colors.orangeAccent,
-                      fontSize: 26,
-                      fontFamily: 'BebasNeue'
-                    )),
-                const SizedBox(height: 180),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/cardapio');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(200, 50)
-                  ),
-                  child: const Text('Cardápio', style: TextStyle(fontFamily: 'BebasNeue', fontSize: 24),),
-                )
-              ],
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Text(
+                      '\n\n\n Bem Vindo(a)! \n Nosso Cardápio está de cara nova! \n Clique no botão abaixo para acessar',
+                      style: TextStyle(
+                          color: Colors.orangeAccent,
+                          fontSize: 26,
+                          fontFamily: 'BebasNeue')),
+                  const SizedBox(height: 180),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/cardapio');
+                    },
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: const Size(200, 50)),
+                    child: const Text(
+                      'Cardápio',
+                      style: TextStyle(fontFamily: 'BebasNeue', fontSize: 24),
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-      
-     ),
     );
   }
 }
@@ -96,7 +99,14 @@ class AlmocoScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Cardápio', textAlign: TextAlign.center, style: TextStyle(fontFamily: 'BebasNeue', fontSize: 24, fontWeight: FontWeight.bold),),
+        title: const Text(
+          'Cardápio',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontFamily: 'BebasNeue',
+              fontSize: 24,
+              fontWeight: FontWeight.bold),
+        ),
       ),
       body: Column(
         children: [
@@ -132,20 +142,23 @@ class AlmocoScreen extends StatelessWidget {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
+                  return Center(child: Text('Erro: ${snapshot.error}'));
                 } else {
                   List<Item> itemList = snapshot.data!;
                   return ListView.builder(
                     itemCount: itemList.length,
                     itemBuilder: (BuildContext context, int index) {
                       Item item = itemList[index];
-
                       return Column(
                         children: [
                           ListTile(
+                            leading: Image.asset('${item.url}'),
                             title: Text(
-                              'Nome: ${item.nome}\nDescrição: ${item.descricao}\nPreço: ${item.preco}\nURL: ${item.url}',
+                              '${item.nome}\n',
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
+                            subtitle: Text(item.descricao),
+                            trailing: Text('R\$ ${item.preco}'),
                           ),
                           const Divider(),
                         ],
@@ -163,11 +176,23 @@ class AlmocoScreen extends StatelessWidget {
 }
 
 Future<List<Item>> Cardapio() async {
-  String jsonString = await rootBundle.loadString('lib/json/cardapio.json');
-  List<dynamic> listaItens = jsonDecode('lib/json/cardapio.json');
-  List<Item> universities = listaItens.map((e) => Item.fromJson(e)).toList();
+  List<Item> itemList = [];
 
-  return Future.value(universities);
+  try {
+    List<dynamic> jsonList = jsonDecode(jsonMenu);
+    itemList = jsonList.map((jsonItem) {
+      return Item(
+        nome: jsonItem['nome'],
+        descricao: jsonItem['descricao'],
+        preco: jsonItem['preco'].toDouble(),
+        url: jsonItem['imagem'],
+      );
+    }).toList();
+  } catch (e) {
+    print('Erro ao analisar o JSON: $e');
+  }
+
+  return itemList;
 }
 
 class Item {
@@ -190,3 +215,68 @@ class Item {
         url: json['url'] as String?);
   }
 }
+
+const String jsonMenu = """
+  [
+  {
+    "imagem": "lib/img/x-tudo.jpg",
+    "nome": "X-tudo",
+    "preco": 25,
+    "descricao": "1 hambúrguer, bacon, 50 g de bacon picados,ovo,1 ovo,presunto,2 fatias de presunto,2 fatias de mussarela (cheddar),alface,1 folha de alface,tomate,1 rodela de tomate,pão de hambúrguer,1 pão de hambúrguer,maionese,1 colher de maionese"
+  },
+  {
+    "imagem": "lib/img/X-bacon.jpg",
+    "nome": "X-Bacon",
+    "preco": 20,
+    "descricao": "1 pão francês,1 hambúrguer,1 fatia de presunto, 2 fatias de mussarela,1 pedaço de bacon"
+  },
+  {
+    "imagem": "lib/img/x-salada.jpg",
+    "nome": "X-salada",
+    "preco": 10.5,
+    "descricao": "1 pão francês,1 hambúrguer,1 fatia de presunto, 2 fatias de mussarela, 1 salada"
+  },
+  {
+    "imagem": "lib/img/x-egg.jpg",
+    "nome": "X-Egg",
+    "preco": 15,
+    "descricao": "1 pão francês,1 hambúrguer,1 fatia de presunto, 2 fatias de mussarela,1 ovo"
+  },
+  {
+    "imagem": "lib/img/x-barbecue.jpg",
+    "nome": "X-barbecue",
+    "preco": 22,
+    "descricao": "1 pão francês,1 hambúrguer,1 fatia de presunto, 2 fatias de mussarela,1 pedaço de bacon,1 salada, 1 ovo, molho barbecue"
+  },
+  {
+    "imagem": "lib/img/x-fish.jpg",
+    "nome": "X-fish",
+    "preco": 28,
+    "descricao": "1 pão francês,1 peixe empanado,1 fatia de presunto, 2 fatias de mussarela,1 pedaço de bacon"
+  },
+  {
+    "imagem": "lib/img/x-frango.jpg",
+    "nome": "X-frango",
+    "preco": 20,
+    "descricao": "1 pão francês,1 frango empanado,1 fatia de presunto, 2 fatias de mussarela,1 pedaço de bacon"
+  },
+  {
+    "imagem": "lib/img/x-kids.jpg",
+    "nome": "X-kids",
+    "preco": 15.5,
+    "descricao": "1 pão francês,1 hambúrguer,1 fatia de presunto, 2 fatias de mussarela"
+  },
+  {
+    "imagem": "lib/img/x-monstro.jpg",
+    "nome": "X-monstro",
+    "preco": 30,
+    "descricao": "1 pão francês,3 hambúrguer, 3fatia de presunto, 5 fatias de mussarela,4 fatias de bacon, 5 pedaços de calabresa"
+  },
+  {
+    "imagem": "lib/img/x-churrasco.jpg",
+    "nome": "X-churrasco",
+    "preco": 35,
+    "descricao": "1 pão francês,1 picanha assada,3. fatia de presunto, 2 fatias de mussarela,1 pedaço de bacon, 1 salada, 2 pedaços de calabresa"
+  }
+]
+ """;
