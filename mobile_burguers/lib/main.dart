@@ -152,13 +152,12 @@ class AlmocoScreen extends StatelessWidget {
                       return Column(
                         children: [
                           ListTile(
-                            leading: Image.asset('${item.url}'),
-                            title: Text(
-                              '${item.nome}\n',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                            leading: Image.asset('${item.url}',),
+                            title: Text('${item.nome}',
+                              style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'BebasNeue', fontSize: 20, color: Color.fromARGB(255, 70, 70, 70)),
                             ),
-                            subtitle: Text(item.descricao),
-                            trailing: Text('R\$ ${item.preco}'),
+                            subtitle: Text(item.descricao, style: const TextStyle(fontFamily: 'BebasNeue', fontSize: 16, color: Colors.black45),),
+                            trailing: Text('R\$ ${item.preco}', style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'BebasNeue', fontSize: 20, color: Colors.orange),),
                           ),
                           const Divider(),
                         ],
