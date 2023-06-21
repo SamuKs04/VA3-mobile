@@ -1,53 +1,62 @@
 [
-{
-  "imagem": "",
-  "nome": "X-tudo",
-  "preco": 25.0,
-  "descricao": "1 hambúrguer, bacon, 50 g de bacon picados,ovo,1 ovo,presunto,2 fatias de presunto,2 fatias de mussarela (cheddar),alface,1 folha de alface,tomate,1 rodela de tomate,pão de hambúrguer,1 pão de hambúrguer,maionese,1 colher de maionese"
-},{
-"imagem": "",
-"nome": "X-Bacon",
-"preco": 20.0,
-"descricao": "1 pão francês,1 hambúrguer,1 fatia de presunto, 2 fatias de mussarela,1 pedaço de bacon”
-},{
-"imagem": "",
-"nome": "X-salada",
-"preco": 10.5,
-"descricao": "1 pão francês,1 hambúrguer,1 fatia de presunto, 2 fatias de mussarela, 1 salada”
-},{
-"imagem": "",
-"nome": "X-Egg",
-"preco": 15.0,
-"descricao": "1 pão francês,1 hambúrguer,1 fatia de presunto, 2 fatias de mussarela,1 ovo”
-},{
-"imagem": "",
-"nome": "X-barbecue",
-"preco": 22.0,
-"descricao": "1 pão francês,1 hambúrguer,1 fatia de presunto, 2 fatias de mussarela,1 pedaço de bacon,1 salada, 1 ovo, molho barbecue”
-},{
-"imagem": "",
-"nome": "X-fish",
-"preco": 28.0,
-"descricao": "1 pão francês,1 peixe empanado,1 fatia de presunto, 2 fatias de mussarela,1 pedaço de bacon”
-},{
-"imagem": "",
-"nome": "X-frango",
-"preco": 20.0,
-"descricao": "1 pão francês,1 frango empanado,1 fatia de presunto, 2 fatias de mussarela,1 pedaço de bacon”
-},{
-"imagem": "",
-"nome": "X-kids”,
-"preco": 15.5,
-"descricao": "1 pão francês,1 hambúrguer,1 fatia de presunto, 2 fatias de mussarela”
-},{
-"imagem": "",
-"nome": "X-monstro",
-"preco": 30.0,
-"descricao": "1 pão francês,3 hambúrguer, 3fatia de presunto, 5 fatias de mussarela,4 fatias de bacon, 5 pedaços de calabresa”
-},{
-"imagem": "",
-"nome": "X-churrasco",
-"preco": 35.0,
-"descricao": "1 pão francês,1 picanha assada,3. fatia de presunto, 2 fatias de mussarela,1 pedaço de bacon, 1 salada, 2 pedaços de calabresa”
-}
+  {
+    "imagem": "",
+    "nome": "X-tudo",
+    "preco": 25,
+    "descricao": "1 hambúrguer, bacon, 50 g de bacon picados,ovo,1 ovo,presunto,2 fatias de presunto,2 fatias de mussarela (cheddar),alface,1 folha de alface,tomate,1 rodela de tomate,pão de hambúrguer,1 pão de hambúrguer,maionese,1 colher de maionese"
+  },
+  {
+    "imagem": "",
+    "nome": "X-Bacon",
+    "preco": 20,
+    "descricao": "1 pão francês,1 hambúrguer,1 fatia de presunto, 2 fatias de mussarela,1 pedaço de bacon"
+  },
+  {
+    "imagem": "",
+    "nome": "X-salada",
+    "preco": 10.5,
+    "descricao": "1 pão francês,1 hambúrguer,1 fatia de presunto, 2 fatias de mussarela, 1 salada"
+  },
+  {
+    "imagem": "",
+    "nome": "X-Egg",
+    "preco": 15,
+    "descricao": "1 pão francês,1 hambúrguer,1 fatia de presunto, 2 fatias de mussarela,1 ovo"
+  },
+  {
+    "imagem": "",
+    "nome": "X-barbecue",
+    "preco": 22,
+    "descricao": "1 pão francês,1 hambúrguer,1 fatia de presunto, 2 fatias de mussarela,1 pedaço de bacon,1 salada, 1 ovo, molho barbecue"
+  },
+  {
+    "imagem": "",
+    "nome": "X-fish",
+    "preco": 28,
+    "descricao": "1 pão francês,1 peixe empanado,1 fatia de presunto, 2 fatias de mussarela,1 pedaço de bacon"
+  },
+  {
+    "imagem": "",
+    "nome": "X-frango",
+    "preco": 20,
+    "descricao": "1 pão francês,1 frango empanado,1 fatia de presunto, 2 fatias de mussarela,1 pedaço de bacon"
+  },
+  {
+    "imagem": "",
+    "nome": "X-kids",
+    "preco": 15.5,
+    "descricao": "1 pão francês,1 hambúrguer,1 fatia de presunto, 2 fatias de mussarela"
+  },
+  {
+    "imagem": "",
+    "nome": "X-monstro",
+    "preco": 30,
+    "descricao": "1 pão francês,3 hambúrguer, 3fatia de presunto, 5 fatias de mussarela,4 fatias de bacon, 5 pedaços de calabresa"
+  },
+  {
+    "imagem": "",
+    "nome": "X-churrasco",
+    "preco": 35,
+    "descricao": "1 pão francês,1 picanha assada,3. fatia de presunto, 2 fatias de mussarela,1 pedaço de bacon, 1 salada, 2 pedaços de calabresa"
+  }
 ]

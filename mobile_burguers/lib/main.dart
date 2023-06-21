@@ -1,6 +1,10 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mobile_burguers/startscreen.dart';
-import 'startscreen.dart';
 
 void main() {
   runApp(const APP());
@@ -112,16 +116,34 @@ class AlmocoScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: 4, // Número de itens na lista
-              itemBuilder: (BuildContext context, int index) {
-                return const Column(children: [
-                  ListTile(
-                    title: Text(
-                        'Nome: Big Macas \n Descrição: Dois hmaburgues alface e pão com gergelin \n preco: RS 99.9 \n url: <imagem>'),
-                  ),
-                  Divider(),
-                ]);
+            child: FutureBuilder<List<Item>>(
+              future: Cardapio(),
+              builder:
+                  (BuildContext context, AsyncSnapshot<List<Item>> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else {
+                  List<Item> itemList = snapshot.data!;
+                  return ListView.builder(
+                    itemCount: itemList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      Item item = itemList[index];
+
+                      return Column(
+                        children: [
+                          ListTile(
+                            title: Text(
+                              'Nome: ${item.nome}\nDescrição: ${item.descricao}\nPreço: ${item.preco}\nURL: ${item.url}',
+                            ),
+                          ),
+                          const Divider(),
+                        ],
+                      );
+                    },
+                  );
+                }
               },
             ),
           ),
@@ -129,6 +151,14 @@ class AlmocoScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<List<Item>> Cardapio() async {
+  String jsonString = await rootBundle.loadString('lib/json/cardapio.json');
+  List<dynamic> listaItens = jsonDecode('lib/json/cardapio.json');
+  List<Item> universities = listaItens.map((e) => Item.fromJson(e)).toList();
+
+  return Future.value(universities);
 }
 
 class Item {
@@ -142,4 +172,12 @@ class Item {
       required this.descricao,
       required this.preco,
       this.url});
+
+  factory Item.fromJson(Map<String, dynamic> json) {
+    return Item(
+        nome: json['nome'],
+        descricao: json['descricao'],
+        preco: json['preco'],
+        url: json['url'] as String?);
+  }
 }
