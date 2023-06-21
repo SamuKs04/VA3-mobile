@@ -45,9 +45,10 @@ class StartScreenState extends State<StartScreen>
         child: FadeTransition(
           opacity: _fadeAnimation,
           child: const Text(
-            'Mobile Burgers',
+            'Mobile Burguers',
             style: TextStyle(
-              fontSize: 24,
+              fontSize: 26,
+              fontFamily: 'BebasNeue',
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
